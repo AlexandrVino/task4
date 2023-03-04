@@ -26,9 +26,9 @@ public class PresentersFactory : MonoBehaviour
             CreatePresenter(_asteroidPartTemplate, asteroid.Model.CreatePart());
     }
 
-    public void CreateNlo(Nlo nlo, string color)
+    public void CreateNlo(Nlo nlo, Color color)
     {
-        if (color == "green") CreatePresenter(_nloGreenTemplate, nlo);
+        if (color == Color.green) CreatePresenter(_nloGreenTemplate, nlo);
         else CreatePresenter(_nloRedTemplate, nlo);
     }
 

@@ -12,6 +12,8 @@ namespace Asteroids.Model
         private readonly float _secondsToStop = 1f;
         private readonly float _degreesPerSecond = 180;
 
+        private Health _health = new Health();
+
         public Vector2 Acceleration { get; private set; }
 
         public void Accelerate(float deltaTime)
@@ -49,5 +51,13 @@ namespace Asteroids.Model
 
             MoveTo(nextPosition);
         }
+
+        public void RemoveHP()
+        {
+            _health.RemoveHP(1);
+        }
+
+        public bool IsAlive() => _health.GetHP() > 0;
+
     }
 }

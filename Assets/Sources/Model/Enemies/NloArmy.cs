@@ -6,6 +6,7 @@ namespace Asteroids.Model
 {
     public class NloArmy : Nlo
     {
+
         public NloArmy(Vector2 position, float speed) : base(null, position, speed) { }
 
         public void SetTarget(Transformable newTarget)

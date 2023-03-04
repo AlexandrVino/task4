@@ -32,16 +32,16 @@ public class SpawnExample : MonoBehaviour
             nloGreen.SetTarget(nloRed);
             nloRed.SetTarget(nloGreen);
 
-            _factory.CreateNlo(nloRed, "red");
-            _factory.CreateNlo(nloGreen, "green");
+            _factory.CreateNlo(nloRed, Color.red);
+            _factory.CreateNlo(nloGreen, Color.green);
 
         }
         else
         {
-            //Vector2 position = GetRandomPositionOutsideScreen();
-            //Vector2 direction = GetDirectionThroughtScreen(position);
+            Vector2 position = GetRandomPositionOutsideScreen();
+            Vector2 direction = GetDirectionThroughtScreen(position);
 
-            //_factory.CreateAsteroid(new Asteroid(position, direction, Config.AsteroidSpeed));
+            _factory.CreateAsteroid(new Asteroid(position, direction, Config.AsteroidSpeed));
         }
     }
 

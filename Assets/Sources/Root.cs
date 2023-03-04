@@ -10,7 +10,6 @@ public class Root : MonoBehaviour
     [SerializeField] private EndGameWindowPresenter _endGameWindow;
 
     private Ship _shipModel;
-    private HPController _shipHP;
     private ShipInputRouter _shipInputRouter;
     private DefaultGun _baseGun;
     private LaserGun _laserGun;
@@ -22,24 +21,23 @@ public class Root : MonoBehaviour
 
     public void RemoveShipHP()
     {
-        _shipHP.RemoveHP(1);
-        int hp = _shipHP.GetHP();
+        _shipModel.RemoveHP();
+        bool isAlive = _shipModel.IsAlive();
 
-        if (hp <= 0)
+        if (!isAlive)
         {
+            DisableShip();
             _shipInputRouter.OnDisable();
-            OnShipDestroying();
         }
     }
-
     public void DisableShip()
     {
-        RemoveShipHP();
+        OnShipDestroying();
     }
 
     private void Awake()
     {
-        _shipHP = new HPController();
+        
         _shipModel = new Ship(new Vector2(0.5f, 0.5f), 0);
 
         _baseGun = new DefaultGun(_shipModel);
