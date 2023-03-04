@@ -6,7 +6,9 @@ namespace Asteroids.Model
 {
     public class Health
     {
-        public Health(uint hpValue)
+        public Health() => _hp = 3;
+
+        public Health(uint hp)
         {
             // HP must belong from 0 to 5
             if (hp > 5) return;
