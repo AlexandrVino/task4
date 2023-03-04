@@ -6,8 +6,14 @@ namespace Asteroids.Model
 {
     public class Health
     {
-        private uint _hp = 3;
+        public Health(uint hpValue)
+        {
+            // HP must belong from 0 to 5
+            if (hp > 5) return;
 
+            _hp = hp;
+        }
+        private uint _hp = 3;
 
         public uint GetHP() => _hp;
 
@@ -22,14 +28,5 @@ namespace Asteroids.Model
             _hp -= value;
             Debug.Log(_hp);
         }
-
-        public void SetHP(uint hp)
-        {
-            // HP must belong from 0 to 5
-            if (hp > 5) return;
-
-            _hp = hp;
-        }
-
     }
 }
