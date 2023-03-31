@@ -61,7 +61,8 @@ public class SpawnExample : MonoBehaviour
         NloPosition data;
 
         data.first = vector;
-        data.second = data.first * -1 + new Vector2(1.0f, 1.0f);
+        data.second = data.first * -1 + new Vector2(Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f));
+
 
         return data;
     }

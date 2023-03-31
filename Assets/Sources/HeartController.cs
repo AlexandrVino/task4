@@ -14,8 +14,6 @@ public class HeartController : MonoBehaviour
 
         _models[_currSelected].SetActive(false);
         _currSelected--;
-
-        // if (_currSelected == -1) _interface.LoadDeadWindow();
     }
 
     public void AddHP()
