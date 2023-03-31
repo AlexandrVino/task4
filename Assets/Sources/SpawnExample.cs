@@ -1,6 +1,13 @@
 using UnityEngine;
 using Asteroids.Model;
 
+
+struct NloPosition
+{
+    public Vector2 first;
+    public Vector2 second;
+}
+
 public class SpawnExample : MonoBehaviour
 {
     [SerializeField] private PresentersFactory _factory;
@@ -13,7 +20,7 @@ public class SpawnExample : MonoBehaviour
     {
         int newIndex = (int)(Time.time / _secondsPerIndex);
 
-        if(newIndex > _index)
+        if (newIndex > _index)
         {
             _index = newIndex;
             OnTick();
@@ -26,8 +33,10 @@ public class SpawnExample : MonoBehaviour
 
         if (chance < 40)
         {
-            NloArmy nloGreen = new NloArmy(GetRandomPositionOutsideScreen(), Config.NloSpeed);
-            NloArmy nloRed = new NloArmy(GetRandomPositionOutsideScreen(), Config.NloSpeed);
+            NloPosition nloPositions = GetRandomPositionNloOutsideScreen();
+
+            NloArmy nloGreen = new NloArmy(nloPositions.first, Config.NloSpeed);
+            NloArmy nloRed = new NloArmy(nloPositions.second, Config.NloSpeed);
 
             nloGreen.SetTarget(nloRed);
             nloRed.SetTarget(nloGreen);
@@ -43,6 +52,18 @@ public class SpawnExample : MonoBehaviour
 
             _factory.CreateAsteroid(new Asteroid(position, direction, Config.AsteroidSpeed));
         }
+    }
+
+    private NloPosition GetRandomPositionNloOutsideScreen()
+    {
+        Vector2 vector = Random.insideUnitCircle.normalized;
+
+        NloPosition data;
+
+        data.first = vector;
+        data.second = data.first * -1 + new Vector2(1.0f, 1.0f);
+
+        return data;
     }
 
     private Vector2 GetRandomPositionOutsideScreen()

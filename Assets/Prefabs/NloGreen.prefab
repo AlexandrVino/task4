@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1000570126821255843}
   m_Layer: 0
   m_Name: NloGreen
-  m_TagString: NloArmy
+  m_TagString: NloArmyGreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

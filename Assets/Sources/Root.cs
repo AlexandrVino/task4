@@ -8,6 +8,7 @@ public class Root : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private PresentersFactory _factory;
     [SerializeField] private EndGameWindowPresenter _endGameWindow;
+    [SerializeField] private HeartController _heartController;
 
     private Ship _shipModel;
     private ShipInputRouter _shipInputRouter;
@@ -22,6 +23,8 @@ public class Root : MonoBehaviour
     public void RemoveShipHP()
     {
         _shipModel.RemoveHP();
+        _heartController.RemoveHP();
+
         bool isAlive = _shipModel.IsAlive();
 
         if (!isAlive)
